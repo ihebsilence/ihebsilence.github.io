@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="@ihebsilence" />
+    <meta property="og:description" content="thé au miel" />
+    <meta property="og:image" content="https://ihebsilence.github.io/site-web/misc/pfp.png" />
+    <meta property="og:url" content="https://jaysons.lol" />
+    <meta property="theme-color" content="#1b1b1b">
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+    <script src="ref/js/sexymouse.js"></script>
+    <script src="ref/js/bettersnow.js"></script>
+    <script src="ref/js/ZOOOOOOOOM.js"></script>
+    <script src="ref/js/cat.js" defer></script>
+    <script src="ref/js/music.js" defer></script>
+    <audio id="backgroundMusic" src="misc/music.mp3" loop></audio>
+    <title>@ihebsilence</title>
+    <link rel="icon" type="image/svg+xml" href="misc/icon.svg">
+    <link rel="stylesheet" href="ref/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Le texte à afficher avec l'effet typewriter
+          const text = "@ihebsilence";
+          let index = 0;
+      
+          // Fonction pour écrire le texte lettre par lettre
+          function typeWriter() {
+            if (index < text.length) {
+              document.title = text.substring(0, index + 1); // Ajoute une lettre à chaque itération
+              index++;
+              setTimeout(typeWriter, 150); // Vitesse de l'effet (en millisecondes)
+            }
+          }
+      
+          // Lance l'effet typewriter au chargement de la page
+          typeWriter();
+        });
+      </script>
+      
+    <style>
+         * {
+            cursor: url('misc/katana.cur'), auto !important; /* Ajustez selon votre structure de fichiers */
+        }
+        .static-text {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 25px;
+            height: 40px;
+            overflow: hidden;
+            border-right: 2px solid;
+            white-space: nowrap;
+            letter-spacing: 2px;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: white
+            }
+        }
+    </style>
+</head>
+
+<body class="blurred">
+
+    <!-- Intégration de la vidéo en arrière-plan -->
+    <video autoplay muted loop id="background-video">
+        <source src="https://ihebsilence.github.io/site-web/misc/background.mp4" type="video/mp4"> <!-- Modifiez le chemin en fonction de votre structure de dossier -->
+        Votre navigateur ne prend pas en charge la vidéo.
+    </video>
+
+    <div id="falling-leaves" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none;"></div>
+
+    <div class="background" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://cdn.discordapp.com/attachments/1084669195247169576/1298051845796659241/7950d961-cfb5-4c47-a721-801b0ddee064.gif?ex=6718287c&is=6716d6fc&hm=2181114df0b4c79a68f3a21a0b3c919c80441b391aa1bccbf6648ecfda928a62&');
+    background-size: cover; background-position: center;"></div>
+
+    <div class="overlay" id="overlay">
+        <div class="proceed-button" onclick="removeOverlay(), playaudio()">Clique</div>
+    </div>
+
+    <div class="blurred-box">
+        <div class="profile-wrapper">
+            <div class="profile-decoration"></div>
+            <div class="profile-picture"></div>
+        </div>
+        <div class="Typewriter" data-testid="typewriter-wrapper">
+            <span class="profile-name"></span> <!-- L'élément doit être vide au départ -->
+            <span class="Typewriter__cursor">|</span>
+        </div>     
+        <div class="showcase">
+            <div class="badge">
+                <i class="fas fa-feather"></i>
+                <span class="tooltip">Vinland</span>
+            </div>
+            <div class="badge">
+                <i class="fa-brands fa-forumbee" style="color: white;"></i>
+                <span class="tooltip">Thé au miel</span>
+            </div>
+        </div>
+        <div class="static-text" id="dynamic-text"></div>
+        <div class="icon-wrapper">
+            <a href="https://bento.me/ihebsilence" class="icon-button" target="_blank">
+                <i class="fas fa-globe"></i>
+            </a>
+            <a href="https://discord.gg/stupid" class="icon-button" target="_blank">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://www.tiktok.com/@malvoyancemax" class="icon-button" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function playaudio() {
+            var audio = document.getElementById('backgroundMusic');
+            audio.loop = true;
+            audio.play();
+            audio.volume = 0.3;
+        }
+
+        function removeOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+            document.body.classList.remove('blurred');
+        }
+
+        const phrases = [
+            "PNL - Uranus",
+            "Monteur - 2024",
+            "bento.me/ihebsilence"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        const typingSpeed = 100;
+        const pauseBetweenPhrases = 2000;
+        const dynamicTextElement = document.getElementById('dynamic-text');
+
+        
+        function typePhrase() {
+            if (charIndex < phrases[phraseIndex].length) {
+                dynamicTextElement.textContent += phrases[phraseIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typePhrase, typingSpeed);
+            } else {
+                setTimeout(erasePhrase, pauseBetweenPhrases);
+            }
+        }
+
+        function erasePhrase() {
+            if (charIndex > 0) {
+                dynamicTextElement.textContent = phrases[phraseIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erasePhrase, typingSpeed / 2);
+            } else {
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(typePhrase, typingSpeed);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            typePhrase();
+        });
+
+        
+    </script>
+    
+    <!-- Contrôle du volume -->
+    <div id="volumeControl" class="volume-button">
+        <span id="volumeIcon"> <!-- Ajout d'un ID pour le volumeIcon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                <defs>
+                    <mask id="ipTVolumeNotice0">
+                        <g fill="none" stroke="#fff" stroke-width="4">
+                            <path fill="#555" stroke-linejoin="round" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M32 15a11.91 11.91 0 0 1 1.684 1.859A12.07 12.07 0 0 1 36 24c0 2.654-.846 5.107-2.278 7.09A11.936 11.936 0 0 1 32 33"></path>
+                            <path stroke-linecap="round" d="M34.236 41.186C40.084 37.696 44 31.305 44 24c0-7.192-3.796-13.496-9.493-17.02"></path>
+                        </g>
+                    </mask>
+                </defs>
+                <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTVolumeNotice0)"></path>
+            </svg>
+        </span>
+    
+        <!-- Le contrôle du volume -->
+        <div class="volume-slider">
+            <input type="range" min="0" max="100" value="30" id="volumeSlider">
+        </div>
+    </div>
+    
+    <!-- Musique de fond -->
+    <audio id="backgroundMusic" src="path/to/your/music.mp3" loop></audio> <!-- Assurez-vous que le chemin est correct -->
+    
+    <script>
+        // Sélectionne l'audio et le slider
+        const audio = document.getElementById('backgroundMusic');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeIcon = document.getElementById('volumeIcon'); // Sélectionne le volumeIcon
+    
+        // Écouteur d'événement pour le slider
+        volumeSlider.addEventListener('input', function() {
+            audio.volume = volumeSlider.value / 100;
+    
+            if (audio.volume === 0) {
+                volumeIcon.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                        <defs>
+                            <mask id="ipTVolumeMute0">
+                                <mask id="ipTVolumeMute1" width="13" height="13" x="30" y="18" maskUnits="userSpaceOnUse" style="mask-type: alpha;">
+                                    <path d="M30 18h13v13H30z"></path>
+                                </mask>
+                                <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
+                                    <g stroke-linecap="round" mask="url(#ipTVolumeMute1)">
+                                        <path d="m40.735 20.286l-8.486 8.485m.001-8.485l8.485 8.485"></path>
+                                    </g>
+                                    <path fill="#555" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"></path>
+                                </g>
+                            </mask>
+                        </defs>
+                        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTVolumeMute0)"></path>
+                    </svg>
+                `;
+            } else {
+                volumeIcon.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
+                        <defs>
+                            <mask id="ipTVolumeNotice0">
+                                <g fill="none" stroke="#fff" stroke-width="4">
+                                    <path fill="#555" stroke-linejoin="round" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M32 15a11.91 11.91 0 0 1 1.684 1.859A12.07 12.07 0 0 1 36 24c0 2.654-.846 5.107-2.278 7.09A11.936 11.936 0 0 1 32 33"></path>
+                                    <path stroke-linecap="round" d="M34.236 41.186C40.084 37.696 44 31.305 44 24c0-7.192-3.796-13.496-9.493-17.02"></path>
+                                </g>
+                            </mask>
+                        </defs>
+                        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTVolumeNotice0)"></path>
+                    </svg>
+                `;
+            }
+        });
+    
+        // Initialiser le volume au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            audio.volume = volumeSlider.value / 100;
+        });
+    </script>
+    
+    <script src="ref/js/profile.js" defer></script>
+
+</body>
+
+</html>
