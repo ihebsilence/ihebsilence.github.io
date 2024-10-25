@@ -1,0 +1,418 @@
+.blurred .background {
+    filter: blur(8px);
+    transition: filter 1s ease; 
+}
+
+* {
+    cursor: url('https://github.com/ihebsilence/site-web/raw/refs/heads/main/misc/katana.cur'), auto !important;
+        }
+
+body {
+background: url('https://media1.tenor.com/m/5c6koZUpxyUAAAAd/vagabond-berserk.gif') no-repeat center center fixed;
+background-size: cover;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: black;
+user-select: none;
+overflow: hidden;
+}
+
+/* Ajoutez ceci à votre fichier CSS */
+#background-video {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover; /* Ajuste la vidéo pour couvrir tout l'écran */
+z-index: -1; /* Place la vidéo derrière le contenu */
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999; 
+    transition: opacity 1s ease; 
+}
+
+.proceed-button {
+     color: rgb(255, 255, 255);
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+  font-family: Arial, sans-serif;
+    user-select: none; 
+
+text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
+         0 0 10px rgba(255, 255, 255, 0.6),
+         0 0 15px rgba(255, 255, 255, 0.6),
+         0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.proceed-button:hover {
+text-decoration: none;
+font-family: Arial, sans-serif;
+transform: scale(1.1);
+
+}
+
+:root {
+--borderWidth: 2px; /* Largeur de bordure exemple */
+--borderColor: rgba(255, 255, 255, 0.5); /* Couleur de bordure exemple */
+--textColor: #fff; /* Couleur du texte blanche */
+--buttonColor: #007BFF; /* Couleur de fond du bouton */
+--buttonTextColor: #fff; /* Couleur du texte du bouton */
+--buttonHoverColor: #0056b3; /* Couleur de fond du bouton au survol */
+}
+
+
+
+.blurred-box {
+width: 600px; /* Largeur fixe */
+height: 400px; /* Hauteur fixe */
+background: rgba(0, 0, 0, 0.5); /* Fond noir semi-transparent */
+backdrop-filter: blur(1px); /* Flou sombre */
+border-radius: 10px; /* Coins arrondis */
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Ombre pour plus de profondeur */
+border: var(--borderWidth) solid var(--borderColor); /* Bordure utilisant des variables */
+display: flex; /* Flexbox pour la mise en page */
+flex-direction: column; /* Alignement vertical */
+justify-content: center; /* Centrer les éléments verticalement */
+align-items: center; /* Centrer les éléments horizontalement */
+position: relative; /* Permet de positionner les enfants */
+padding: 20px; /* Espacement intérieur */
+margin: 20px auto; /* Centrer la boîte dans le conteneur parent */
+}
+
+/* Style pour le titre */
+.blurred-box h1 {
+color: var(--textColor); /* Utiliser une variable pour la couleur du texte */
+margin: 0; /* Supprimer la marge par défaut */
+font-size: 1.5rem; /* Taille de la police */
+text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Effet de lueur subtile */
+}
+
+/* Style pour la description */
+.blurred-box p {
+color: var(--textColor); /* Utiliser une variable pour la couleur du texte */
+margin-top: 10px; /* Espace au-dessus du paragraphe */
+text-align: center; /* Centrer le texte */
+font-size: 1rem; /* Taille de la police */
+}
+
+/* Style pour le bouton */
+.blurred-box .button {
+background: var(--buttonColor); /* Couleur de fond du bouton utilisant une variable */
+color: var(--buttonTextColor); /* Couleur du texte du bouton */
+border: none; /* Supprimer la bordure par défaut */
+border-radius: 5px; /* Coins arrondis */
+padding: 10px 20px; /* Espacement intérieur */
+cursor: pointer; /* Pointeur au survol */
+transition: background 0.3s; /* Transition douce */
+}
+
+/* Effet de survol pour le bouton */
+.blurred-box .button:hover {
+background: var(--buttonHoverColor); /* Changer le fond au survol */
+}
+
+/* Exemple d'un conteneur flexible à l'intérieur de la boîte floue */
+.blurred-box .content {
+display: flex; /* Mise en page flexible pour le contenu intérieur */
+flex-direction: column; /* Empiler les éléments verticalement */
+width: 100%; /* Largeur complète */
+gap: 10px; /* Espace entre les éléments */
+}
+
+
+
+.profile-wrapper {
+position: relative;
+width: 150px;
+height: 150px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 0;
+margin-top: -160px;
+}
+
+.volume-button {
+align-items: center;
+background-color: rgba(0, 0, 0, 0.7);
+border-radius: 15px;
+cursor: pointer;
+display: flex;
+gap: 15px;
+height: 32px;
+justify-content: left;
+left: 15px;
+overflow: hidden;
+padding: 12px;
+position: fixed;
+top: 15px;
+transition: width 0.35s ease;
+width: 32px;
+z-index: 9999;
+}
+
+.volume-button:hover {
+width: 160px; /* Élargit le bouton au survol */
+}
+
+.volume-button svg {
+color: white;
+font-size: 29px;
+margin-left: 1px;
+min-width: 30px;
+}
+
+.volume-slider {
+display: none; /* Masqué par défaut */
+margin-left: 10px;
+flex-grow: 1; /* Permet au slider de prendre de l'espace quand il apparaît */
+}
+
+/* Styles pour le slider de volume */
+.volume-slider input[type="range"] {
+-webkit-appearance: none;
+width: 100%;
+height: 8px;
+border-radius: 5px;
+outline: none;
+opacity: 0.8;
+transition: opacity .15s ease-in-out;
+}
+
+/* Track du slider (fond de la barre) */
+.volume-slider input[type="range"]::-webkit-slider-runnable-track {
+background: rgba(255, 255, 255, 1); /* Barre blanche visible */
+height: 8px;
+border-radius: 5px;
+}
+
+/* Track du slider (fond de la barre) quand le volume est à 0 */
+.volume-slider input[type="range"]:not(:focus)::-webkit-slider-runnable-track {
+background: rgba(128, 128, 128, 0.3); /* Fond gris transparent */
+}
+
+/* Barre blanche pour Firefox */
+.volume-slider input[type="range"]::-moz-range-track {
+background: rgba(255, 255, 255, 1); /* Barre blanche visible */
+height: 8px;
+border-radius: 5px;
+}
+
+/* Track du slider (fond de la barre) quand le volume est à 0 pour Firefox */
+.volume-slider input[type="range"]:not(:focus)::-moz-range-track {
+background: rgba(128, 128, 128, 0.3); /* Fond gris transparent */
+}
+
+/* Thumb (la boule du slider) */
+.volume-slider input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+background-color: rgba(255, 255, 255, 1); /* Boule blanche */
+border: none; /* Retire les bordures */
+box-shadow: 0px 5px 25px 0px rgba(255, 255, 255, 0.5); /* Ombre blanche légère */
+border-radius: 50%;
+cursor: pointer;
+margin-top: -6px; /* Centrer le thumb */
+}
+
+.volume-slider input[type="range"]::-moz-range-thumb {
+width: 20px;
+height: 20px;
+background-color: rgba(255, 255, 255, 1); /* Boule blanche */
+border: none;
+box-shadow: 0px 5px 25px 0px rgba(255, 255, 255, 0.5); /* Ombre blanche légère */
+border-radius: 50%;
+cursor: pointer;
+}
+
+/* Hover et focus */
+.volume-slider input[type="range"]:hover {
+opacity: 1;
+}
+
+.volume-slider input[type="range"]:focus {
+outline: none;
+opacity: 1;
+}
+
+/* Affiche le slider au survol */
+.volume-button:hover .volume-slider {
+display: block;
+}
+
+.Typewriter {
+display: inline-flex; /* Permet d'aligner le texte et le curseur */
+align-items: center; /* Centre verticalement le texte et le curseur */
+font-family: monospace; /* Choix d'une police à largeur fixe pour l'effet de typewriter */
+}
+
+.Typewriter__cursor {
+-webkit-animation: Typewriter-cursor 1s infinite; /* Animation du curseur */
+animation: Typewriter-cursor 1s infinite;
+margin-left: 2px; /* Espacement entre le texte et le curseur */
+}
+
+@-webkit-keyframes Typewriter-cursor {
+0% { opacity: 0; }
+50% { opacity: 1; }
+100% { opacity: 0; }
+}
+
+@keyframes Typewriter-cursor {
+0% { opacity: 0; }
+50% { opacity: 1; }
+100% { opacity: 0; }
+}
+
+
+/* Ajoutez d'autres styles selon vos besoins */
+
+.profile-picture {
+width: 120px;
+height: 120px;
+border-radius: 50%;
+background: url('https://media.discordapp.net/attachments/1196882403336142988/1299468457494052974/pfp.png?ex=671d4fcf&is=671bfe4f&hm=150060429f426ddb58d5861a83ee779b89b2cd865d4e30dc7d6f194499fe542b&=&format=webp&quality=lossless&width=551&height=551') no-repeat center center;
+background-size: 125%; /* Augmentez la taille pour zoomer */
+background-position: -23px center; /* Décale l'image vers la gauche */
+border: 2px solid rgba(255, 255, 255, 0.7);
+position: relative;
+z-index: 1;
+box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+
+
+.profile-decoration {
+position: absolute;
+margin-top: 75.5px;
+margin-left: 74.5px;
+top: 0; 
+left: 0;
+width: 150px;
+height: 150px;
+background: url('https://cdn.discordapp.com/avatar-decoration-presets/a_5087f7f988bd1b2819cac3e33d0150f5.png?size=240&passthrough=true') no-repeat center center;
+background-size: contain;
+z-index: 2;
+transform: translate(-50%, -50%);
+}
+
+.profile-name {
+font-size: 34px;
+color: white;
+font-family: Arial, sans-serif;
+text-align: center;
+margin-top: -10px; 
+text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
+         0 0 10px rgba(255, 255, 255, 0.6),
+         0 0 15px rgba(255, 255, 255, 0.6),
+         0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.showcase {
+width: 75px;
+height: 40px;
+margin-top: 10px;
+background-color: rgba(255, 255, 255, 0.08);
+border: 2px solid rgba(255, 255, 255, 0.04);
+border-radius: 25px;
+display: flex;
+gap: 5.5px;
+justify-content: center;
+align-items: center;
+position: relative;
+}
+
+.badge {
+color: white;
+font-size: 20px;
+position: relative;
+cursor: pointer;
+text-shadow: 0 0 5px rgba(255, 255, 255);
+}
+
+.tooltip {
+position: absolute;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%);
+background-color: rgba(46, 46, 46, 0.89);
+color: white;
+padding: 5px 10px;
+border-radius: 25px;
+font-size: 14px;
+font-family: Arial, sans-serif;
+visibility: hidden;
+opacity: 0;
+transition: opacity 0.2s;
+z-index: 10;
+text-align: center;
+}
+
+.badge:hover .tooltip {
+visibility: visible;
+opacity: 1;
+}
+
+.static-text {
+position: absolute;
+bottom: 110px;
+color: white;
+font-size: 24px;
+font-family: Arial, sans-serif;
+text-align: center; 
+text-shadow: 0 0 10px rgba(255, 255, 255);
+}
+
+.icon-wrapper {
+display: flex;
+justify-content: center;
+position: absolute; 
+bottom: 50px;
+left: 50%;
+transform: translateX(-50%);
+text-shadow: 0 0 10px rgba(255, 255, 255);
+}
+
+.icon-button {
+font-size: 40px;
+color: white;
+text-decoration: none;
+position: relative;
+transition: transform 0.2s;
+margin: 0 5px;
+}
+
+.icon-button:hover {
+transform: scale(1.1);
+}
+
+.icon-button::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 100%;
+height: 100%;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.2);
+filter: blur(15px);
+transform: translate(-50%, -50%);
+z-index: -1;
+}
