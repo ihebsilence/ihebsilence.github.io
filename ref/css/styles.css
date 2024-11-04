@@ -288,7 +288,7 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: url('https://media.discordapp.net/attachments/1178825607103139852/1302454160867983370/pfp.png?ex=67282c76&is=6726daf6&hm=e46a785558f5264e88af6cf8832cfdefd3eda022b89bcd1b78e7da31da034024&=&format=webp&quality=lossless&width=540&height=540') no-repeat center center;
+    background: url('https://raw.githubusercontent.com/ihebsilence/ihebsilence.github.io/refs/heads/main/misc/pfp.png') no-repeat center center;
     background-size: 125%; /* Augmentez la taille pour zoomer */
     background-position: -23px center; /* Décale l'image vers la gauche */
     border: 2px solid rgba(255, 255, 255, 0.7);
